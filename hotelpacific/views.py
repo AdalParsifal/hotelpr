@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
+from .models import Usuario
 
 def home(request):
     return render (request, 'home.html')
@@ -36,7 +37,9 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+            user.rol = 'Cliente'
+            user.save()
             return redirect('login_user')
     else:
         form = CustomUserCreationForm()

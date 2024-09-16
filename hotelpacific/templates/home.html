@@ -51,9 +51,15 @@
         <h2>Registro de Usuario</h2>
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
-            <label for="new_username">Nombre de usuario:</label>
+            <label for="new_username">RUT (sin puntos, ni guion):</label>
             <input type="text" id="new_username" name="new_username" required>
             
+            <label for="first_name">Nombre:</label>
+            <input type="text" id="first_name" name="first_name" required>
+            
+            <label for="last_name">Apellido:</label>
+            <input type="text" id="last_name" name="last_name" required>              
+
             <label for="email">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required>
 
