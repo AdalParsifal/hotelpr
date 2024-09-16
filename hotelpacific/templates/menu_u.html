@@ -12,10 +12,10 @@
         <li><a href="{% url 'disponibilidad' %}">Disponibilidad de Habitaciones</a></li>
         <li><a href="{% url 'ver_hab' id=1 %}">Ver Habitación</a></li>
         <li><a href="{% url 'consultar_reserva' %}">Consultar Reserva</a></li>
-        <li><a href="#">Modificar Reserva</a></li>
-        <li><a href="#">Cancelar Reserva</a></li>
-        <li><a href="#">Contacto Hotel</a></li>
-        <li><a href="#">Cerrar Sesión</a></li>
+        <li><a href="{% url 'modificar_reserva' %}">Modificar Reserva</a></li>
+        <li><a href="{% url 'cancelar_reserva' %}">Cancelar Reserva</a></li>
+        <li><a href="{% url 'contacto' %}">Contacto Hotel</a></li>
+        <li><a href="{% url 'home' %}">Cerrar Sesión</a></li>
     </ul>
     </body>
 </html>

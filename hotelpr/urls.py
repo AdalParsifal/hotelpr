@@ -36,6 +36,11 @@ urlpatterns = [
     path('pago/', views.pago, name='pago'),
     path('confirmar_pago/', views.confirmar_pago, name='confirmar_pago'),
     path('reservar/', views.reservar, name='reservar'),
-    path('consultar_reserva/', views.consultar_reserva, name='consultar_reserva'),
     
+    path('consultar_reserva/', views.consultar_reserva, name='consultar_reserva'),
+    path('modificar_reserva/', views.modificar_reserva, name='modificar_reserva'),
+    path('cancelar_reserva/', views.cancelar_reserva, name='cancelar_reserva'),
+    path('contacto/', views.contacto, name='contacto'),
+
+    path('admin_menu/', views.admin_menu, name='admin_menu'),
 ]

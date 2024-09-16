@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancelar Reserva</title>
+</head>
+<body>
+    <h1>Reserva Hotelera - Cancelar Reserva</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="habitacion">Habitación:</label>
+        <input type="text" id="habitacion" name="habitacion"><br><br>
+
+        <label for="horario">Horario:</label>
+        <input type="time" id="horario" name="horario"><br><br>
+
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña"><br><br>
+
+        <button type="submit">Cancelar Reserva</button>
+    </form>
+    <p>Recuerda: Solo se puede cancelar con al menos 24 horas de antelación.</p>
+    <a href="{% url 'menu_u' %}">Volver a Menú</a>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pacific Reef Hotel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .contact-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .info {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1>Contacto</h1>
+        <p>Si tienes algún problema o consulta, por favor utiliza los siguientes datos de contacto:</p>
+        <p><span class="info">Correo Electrónico:</span> {{ email }}</p>
+        <p><span class="info">Teléfono:</span> {{ telefono }}</p>
+        <p><span class="info">Dirección:</span> {{ direccion }}</p>
+    </div>
+    <a href="{% url 'menu_u' %}">Volver a Menú</a>
+</body>
+</html>

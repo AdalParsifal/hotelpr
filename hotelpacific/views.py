@@ -14,6 +14,8 @@ def recovery(request):
     return render (request, 'recovery.html')
 def menu_u(request):
     return render(request, 'menu_u.html')
+def admin_menu(request):
+    return render(request, 'admin_menu.html')
 
 def ver_hab(request, id):
     context = {'habitacion_id': id}
@@ -32,8 +34,24 @@ def confirmar_pago(request):
 def reservar(request):
     #exito de reserva, hijo del anterior
     return render(request, 'reservar.html')
+
 def consultar_reserva(request):
     return render(request, 'consultar_reserva.html')
+def modificar_reserva(request):
+    if request.method == 'POST':
+        return redirect('menu')
+    return render(request, 'modificar_reserva.html')
+def cancelar_reserva(request):
+    if request.method == 'POST':
+        return redirect('menu')
+    return render(request, 'cancelar_reserva.html')
+def contacto(request):
+    context = {
+        'email': 'info@pacificreefhotel.com',
+        'telefono': '+123 456 789',
+        'direccion': '123 Ocean View, Pacific Reef City'
+    }
+    return render(request, 'contacto.html', context)
 
 
 # Inicio de sesión para usuarios
