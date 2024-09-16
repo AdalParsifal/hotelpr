@@ -5,6 +5,8 @@ from .models import Usuario
 
 def home(request):
     return render (request, 'home.html')
+def recovery(request):
+    return render (request, 'recovery.html')
 # Inicio de sesión para usuarios
 def login_user(request):
     if request.method == 'POST':
