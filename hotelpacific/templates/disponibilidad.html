@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Disponibilidad de Habitaciones</title>
+    <link rel="stylesheet" href="{% static 'css/recovery.css' %}">
+</head>
+<body>
+    <h1>Reserva Hotelera - Disponibilidad de Habitaciones</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="habitaciones">Habitación Disponible:</label>
+        <select id="habitaciones" name="habitaciones">
+            {% for habitacion in habitaciones %}
+            <option value="{{ habitacion }}">{{ habitacion }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="horario">Horario Disponible:</label>
+        <input type="time" id="horario" name="horario"><br><br>
+        <button type="submit">Hacer Reserva</button>
+    </form>
+    <a href="{% url 'menu_u' %}">Volver a Menú</a>
+</body>
+</html>

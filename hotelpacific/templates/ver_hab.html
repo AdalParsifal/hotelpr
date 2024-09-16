@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Habitación</title>
+</head>
+<body>
+    <h1>Reserva Hotelera - Habitación {{ habitacion_id }}</h1>
+    <p>Detalles: Para 4 personas, con vista al mar.</p>
+    <div>
+        <img src="ruta_de_la_imagen" alt="Vista de la habitación" />
+    </div>
+    <a href="{% url 'home' %}">Volver a Menú</a>
+</body>
+</html>

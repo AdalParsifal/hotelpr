@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Reservas</title>
+</head>
+<body>
+    <h1>Reserva Hotelera - Consultar Reservas</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="habitacion">Habitación:</label>
+        <input type="text" id="habitacion" name="habitacion"><br><br>
+        <label for="horas">Horas:</label>
+        <input type="text" id="horas" name="horas"><br><br>
+        <button type="submit">Consultar</button>
+    </form>
+    <a href="{% url 'menu_u' %}">Volver a Menú</a>
+</body>
+</html>

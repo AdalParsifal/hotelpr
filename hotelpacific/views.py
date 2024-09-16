@@ -12,6 +12,22 @@ def home(request):
     return render (request, 'home.html')
 def recovery(request):
     return render (request, 'recovery.html')
+def menu_u(request):
+    return render(request, 'menu_u.html')
+def reservar(request):
+    return render(request, 'reservar.html')
+
+def ver_hab(request, id):
+    context = {'habitacion_id': id}
+    return render(request, 'ver_hab.html', context)
+def disponibilidad_habitaciones(request):
+    # recuperar habitaciones disponibles desde bd
+    habitaciones_disponibles = ['Habitación 1', 'Habitación 2', 'Habitación 3']
+    context = {'habitaciones': habitaciones_disponibles}
+    return render(request, 'disponibilidad.html', context)
+def consultar_reserva(request):
+    return render(request, 'consultar_reserva.html')
+
 # Inicio de sesión para usuarios
 def login_user(request):
     if request.method == 'POST':
