@@ -14,8 +14,6 @@ def recovery(request):
     return render (request, 'recovery.html')
 def menu_u(request):
     return render(request, 'menu_u.html')
-def reservar(request):
-    return render(request, 'reservar.html')
 
 def ver_hab(request, id):
     context = {'habitacion_id': id}
@@ -25,8 +23,12 @@ def disponibilidad_habitaciones(request):
     habitaciones_disponibles = ['Habitación 1', 'Habitación 2', 'Habitación 3']
     context = {'habitaciones': habitaciones_disponibles}
     return render(request, 'disponibilidad.html', context)
+def reservar(request):
+    #exito de reserva, hijo del anterior
+    return render(request, 'reservar.html')
 def consultar_reserva(request):
     return render(request, 'consultar_reserva.html')
+
 
 # Inicio de sesión para usuarios
 def login_user(request):
@@ -36,7 +38,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('menu_u')
         else:
             # Mensaje de error si la autenticación falla
             return render(request, 'login_user.html', {'error': 'Credenciales incorrectas'})
