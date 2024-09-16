@@ -20,10 +20,14 @@ from hotelpacific import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('home/', views.home, name='home'),
-    path('recovery/', views.recovery, name='recovery'),
     path('login_user/', views.login_user, name='login_user'),
     path('login_admin/', views.login_admin, name='login_admin'),
     path('register/', views.register, name='register'),
+    
+    path('recovery_password/', views.recovery_password, name='recovery_password'),
+    path('confirm_code/', views.confirm_code, name='confirm_code'),
+    path('set_new_password/<str:email>/', views.set_new_password, name='set_new_password'),
     
 ]
