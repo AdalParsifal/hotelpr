@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Pago</title>
+</head>
+<body>
+    <h1>Reserva Hotelera - Realizar Pago</h1>
+    <form method="post" action="{% url 'confirmar_pago' %}">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <label for="titular">Titular de la tarjeta:</label>
+        <input type="text" id="titular" name="titular"><br><br>
+
+        <label for="n_tarjeta">Número de tarjeta:</label>
+        <input type="text" id="n_tarjeta" name="n_tarjeta"><br><br>
+
+        <label for="clave">Clave:</label>
+        <input type="password" id="clave" name="clave"><br><br>
+
+        <label for="tipo_tarjeta">Tipo de Tarjeta:</label>
+        <select id="tipo_tarjeta" name="tipo_tarjeta">
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+        </select><br><br>
+
+        <button type="submit">Hacer Pago</button>
+    </form>
+    <a href="{% url 'menu' %}">Volver a Menú</a>
+</body>
+</html>

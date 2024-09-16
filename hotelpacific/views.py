@@ -23,6 +23,12 @@ def disponibilidad_habitaciones(request):
     habitaciones_disponibles = ['Habitación 1', 'Habitación 2', 'Habitación 3']
     context = {'habitaciones': habitaciones_disponibles}
     return render(request, 'disponibilidad.html', context)
+def pago(request):
+    return render(request, 'pago.html')
+def confirmar_pago(request):
+    if request.method == 'POST':
+        return render(request, 'confirmacion_pago.html')
+    return render(request, 'pago.html')
 def reservar(request):
     #exito de reserva, hijo del anterior
     return render(request, 'reservar.html')

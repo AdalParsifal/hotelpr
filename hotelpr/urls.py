@@ -31,9 +31,11 @@ urlpatterns = [
     path('set_new_password/<str:email>/', views.set_new_password, name='set_new_password'),
 
     path('menu_u/', views.menu_u, name='menu_u'),
-    path('reservar/', views.reservar, name='reservar'),
     path('habitacion/<int:id>/', views.ver_hab, name='ver_hab'),
     path('disponibilidad/', views.disponibilidad_habitaciones, name='disponibilidad'),
+    path('pago/', views.pago, name='pago'),
+    path('confirmar_pago/', views.confirmar_pago, name='confirmar_pago'),
+    path('reservar/', views.reservar, name='reservar'),
     path('consultar_reserva/', views.consultar_reserva, name='consultar_reserva'),
     
 ]
