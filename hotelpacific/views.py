@@ -27,7 +27,7 @@ def pago(request):
     return render(request, 'pago.html')
 def confirmar_pago(request):
     if request.method == 'POST':
-        return render(request, 'confirmacion_pago.html')
+        return render(request, 'confirmar_pago.html')
     return render(request, 'pago.html')
 def reservar(request):
     #exito de reserva, hijo del anterior
