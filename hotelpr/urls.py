@@ -43,4 +43,6 @@ urlpatterns = [
     path('contacto/', views.contacto, name='contacto'),
 
     path('admin_menu/', views.admin_menu, name='admin_menu'),
+    path('create_user/', views.create_user, name='create_user'),
+    path('edit_user/', views.edit_user, name='edit_user'),
 ]
