@@ -4,22 +4,31 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Disponibilidad de Habitaciones</title>
-    <link rel="stylesheet" href="{% static 'css/recovery.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dispo.css' %}">
 </head>
 <body>
-    <h1>Reserva Hotelera - Disponibilidad de Habitaciones</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="habitaciones">Habitación Disponible:</label>
-        <select id="habitaciones" name="habitaciones">
-            {% for habitacion in habitaciones %}
-            <option value="{{ habitacion }}">{{ habitacion }}</option>
-            {% endfor %}
-        </select><br><br>
-        <label for="horario">Horario Disponible:</label>
-        <input type="time" id="horario" name="horario"><br><br>
-        <li><a href="{% url 'pago' %}">HACER RESERVA</a></li>
-    </form>
-    <a href="{% url 'menu_u' %}">Volver a Menú</a>
+    <header>
+        <h1>Reserva Hotelera - Disponibilidad de Habitaciones</h1>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            <label for="habitaciones">Habitación Disponible:</label>
+            <select id="habitaciones" name="habitaciones" required>
+                <option value="">Seleccione una habitación</option>
+                {% for habitacion in habitaciones %}
+                <option value="{{ habitacion }}">{{ habitacion }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+
+            <label for="horario">Horario Disponible:</label>
+            <input type="time" id="horario" name="horario" required>
+            <br><br>
+
+            <li><a href="{% url 'pago' %}">HACER RESERVA</a></li>
+        </form>
+        <a href="{% url 'menu_u' %}">Volver a Menú</a>
+    </main>
 </body>
 </html>
