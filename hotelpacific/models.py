@@ -36,6 +36,7 @@ class Habitacion(models.Model):
     tipo_habitacion = models.CharField(max_length=50, choices=TIPO_CHOICES)
     estado_habitacion = models.CharField(max_length=20, choices=ESTADO_CHOICES)
     precio_por_noche = models.DecimalField(max_digits=10, decimal_places=2)
+    imagen = models.ImageField(upload_to='habitaciones/', null=True, blank=True)
 
     def __str__(self):
         return f'Habitación {self.tipo_habitacion}'
