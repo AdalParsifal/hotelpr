@@ -6,6 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacific Reef - Reservas</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <style>
+        /* Estilos para el modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,6 +59,12 @@
         </nav>
     </header>
 
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p> 
+        </div>
+    </div>
     <section id="login-user">
         <h2>Iniciar Sesión - Usuario</h2>
         <form action="{% url 'login_user' %}" method="post">
@@ -53,8 +99,8 @@
         <h2>Registro de Usuario</h2>
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
-            <label for="new_username">RUT (sin puntos, ni guion):</label>
-            <input type="text" id="new_username" name="new_username" required>
+            <label for="username">RUT (sin puntos, ni guion):</label>
+            <input type="text" id="username" name="username" required>
             
             <label for="first_name">Nombre:</label>
             <input type="text" id="first_name" name="first_name" required>
@@ -74,9 +120,29 @@
             <button type="submit">Registrarse</button>
         </form>
     </section>
-
     <footer>
         <p>&copy; 2024 Pacific Reef Hotel</p>
     </footer>
+    <script>
+        // Función para mostrar el modal
+        function showModal(message) {
+            var modal = document.getElementById("successModal");
+            var modalMessage = document.getElementById("modalMessage");
+            modalMessage.innerText = message; // Establece el mensaje
+            modal.style.display = "block"; // Muestra el modal
+        }
+
+        // Cerrar el modal cuando el usuario hace clic en "X"
+        document.querySelector(".close").onclick = function() {
+            document.getElementById("successModal").style.display = "none";
+        }
+
+        // Mostrar el modal si hay un mensaje de éxito
+        {% if messages %}
+            {% for message in messages %}
+                showModal("{{ message }}");
+            {% endfor %}
+        {% endif %}
+    </script>
 </body>
 </html>

@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
 from .forms import UserForm
 from .models import Usuario
+from .models import Rol
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -106,12 +107,17 @@ def login_admin(request):
 # Registro de usuarios
 def register(request):
     if request.method == 'POST':
+        print(request.POST.get('username'))  # Verifica si el username está llegando
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.rol = 'Cliente'
+            cliente_rol = Rol.objects.get(descripcion_rol='Cliente')
+            user.rol = cliente_rol
             user.save()
-            return redirect('login_user')
+            messages.success(request, 'Registro completado con éxito. ¡Bienvenido!')
+            return render(request, 'home.html', {'form': form})
+        else:
+            print(f"Errores del formulario: {form.errors}")
     else:
         form = CustomUserCreationForm()
     return render(request, 'home.html', {'form': form})
