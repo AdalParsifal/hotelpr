@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Ver Habitación</title>
+    <title>Ver Habitaciones</title>
+    <link rel="stylesheet" href="{% static 'css/habshow.css' %}">
+    <!-- Incluyendo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
-    <h1>Reserva Hotelera - Habitación {{ habitacion_id }}</h1>
-    <p>Detalles: Para 4 personas, con vista al mar.</p>
-    <div>
-        <img src="ruta_de_la_imagen" alt="Vista de la habitación" />
+    <div class="container">
+        <h1>Reserva Hotelera - Habitaciones</h1>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for habitacion in habitaciones %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ habitacion.imagen.url }}" class="d-block w-100" alt="Habitación {{ habitacion.id }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Habitación {{ habitacion.tipo_habitacion }}</h5>
+                        <p>Estado: {{ habitacion.estado_habitacion }} - Precio: ${{ habitacion.precio_por_noche }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+        <a href="{% url 'menu_u' %}" class="btn btn-primary mt-3">Volver a Menú</a>
     </div>
-    <a href="{% url 'home' %}">Volver a Menú</a>
+
+    <!-- Incluyendo jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+/* Reset de estilos */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Color de fondo suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px; /* Máxima anchura del contenedor */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilo del título principal */
+h1 {
+    text-align: center;
+    color: #005f73; /* Color principal */
+    margin-bottom: 30px; /* Espaciado inferior */
+}
+
+/* Estilo del carrusel */
+.carousel-item {
+    height: 80vh; /* Aumenta la altura del carrusel */
+    overflow: hidden; /* Ocultar el desbordamiento */
+}
+
+.carousel-item img {
+    width: 100%; /* Imagen ocupa el 100% del ancho */
+    height: 100%; /* Hace que la imagen ocupe todo el alto */
+    object-fit: cover; /* Cubrir el contenedor sin distorsionar */
+    transition: transform 0.5s ease; /* Añade una transición suave para el zoom */
+}
+
+.carousel-item:hover img {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+/* Estilo de la leyenda del carrusel */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo de los botones */
+.btn {
+    display: block; /* Botón ocupa el 100% del ancho */
+    margin: 20px auto; /* Centrado */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #028090; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Centrado del texto */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.btn:hover {
+    background-color: #007f91; /* Cambio de color al pasar el ratón */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .carousel-item {
+        height: 50vh; /* Ajusta la altura en pantallas pequeñas */
+    }
+}
