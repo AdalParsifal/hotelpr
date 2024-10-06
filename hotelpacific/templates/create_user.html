@@ -1,8 +1,10 @@
 <html lang="es"></html>
 <h1>Create User</h1>
 <form method="post">
+    {% load static %}
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Create User</button>
+    <link rel="stylesheet" href="{% static 'css/dispo.css' %}">
 </form>
 <a href="{% url 'admin_menu' %}">Back to Menu</a>
