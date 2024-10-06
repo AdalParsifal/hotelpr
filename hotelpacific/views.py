@@ -68,17 +68,41 @@ def create_user(request):
     else:
         form = UserForm()
     return render(request, 'create_user.html', {'form': form})
-def edit_user(request):
-    users = User.objects.all(user)
-    user = User.objects.get()
+def edit_user(request, id=None):
+    users = Usuario.objects.all()  
+    user = None
+    form = None
+
+    if id:
+        user = get_object_or_404(Usuario, id=id)  
+        if request.method == 'POST':
+            form = UserForm(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+                return redirect('edit_user')  
+        else:
+            form = UserForm(instance=user)
+
+    context = {
+        'users': users,
+        'form': form,
+        'user': user
+    }
+    return render(request, 'edit_user.html', context)
+def del_user(request):
+    usuarios = Usuario.objects.all()  
+
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('admin_menu')
-    else:
-        form = UserForm(instance=user)
-    return render(request, 'edit_user.html', {'form': form, 'user': user, 'users': users})
+        user_id = request.POST.get('user_id') 
+        usuario = get_object_or_404(Usuario, id=user_id)  
+        usuario.delete()  
+        messages.success(request, f'El usuario "{usuario.username}" ha sido eliminado exitosamente.')
+        return redirect('del_user') 
+
+    context = {
+        'usuarios': usuarios
+    }
+    return render(request, 'del_user.html', context)
 
 
 # Inicio de sesión para usuarios

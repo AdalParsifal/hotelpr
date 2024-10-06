@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Eliminar Usuarios</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>
+                        {% if usuario.rol %}
+                            {{ usuario.rol.descripcion_rol }}
+                        {% else %}
+                            Sin rol
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form method="post" action="{% url 'del_user' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="user_id" value="{{ usuario.id }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'admin_menu' %}" class="btn btn-primary mt-3">Volver a Inicio</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

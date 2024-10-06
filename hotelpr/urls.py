@@ -46,7 +46,9 @@ urlpatterns = [
 
     path('admin_menu/', views.admin_menu, name='admin_menu'),
     path('create_user/', views.create_user, name='create_user'),
-    path('edit_user/', views.edit_user, name='edit_user'),
+    path('edit_user/', views.edit_user, name='edit_user'),  # Página principal que lista todos los usuarios
+    path('edit_user/<int:id>/', views.edit_user, name='edit_user'),  # Opcional: id para editar usuario específico
+    path('del_user/', views.del_user, name='del_user'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
